@@ -28,7 +28,7 @@ public class PrintLines {
      * Given a script formatted like "Rent-Excerpt.txt" and "Rent.txt", print all lines for a given
      * actress in the following format. For example, if the search term is "Roger" or "roger":
      * <pre>
-     * ROGER
+     * roger
      * ---
      * This won't tune.
      * ---
