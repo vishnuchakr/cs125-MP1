@@ -10,9 +10,13 @@ import java.util.Scanner;
  * @see <a href="https://en.wikipedia.org/wiki/Caesar_cipher">Caesar Cipher Documentation</a>
  */
 public class Encrypt {
-
+    /**
+     * Insert JAVADOC comment.
+     */
     public static final int MIN_SHIFT = -1024;
-
+    /**
+     * Insert JAVADOC comment.
+     */
     public static final int MAX_SHIFT = 1024;
 
     /** Transformation start. */
@@ -44,9 +48,34 @@ public class Encrypt {
      * Complete the Javadoc comment for this function and write it.
      *
      * @see <a href="http://www.asciitable.com/">ASCII Character Table</a>
+     * @param line given character array.
+     * @param shift given int value for shift.
+     * @return returns character array after the shift.
      */
     public static char[] encrypter(final char[] line, final int shift) {
-        return 0;
+
+        if (shift < MIN_SHIFT || shift > MAX_SHIFT) {
+            return null;
+        }
+
+        for (char x : line) {
+            if ((int) x < TRANSFORM_START || (int) x > TRANSFORM_END) {
+                return null;
+            }
+        }
+
+        char[] response = new char[line.length];
+
+        for (int i = 0; i < line.length; i++) {
+            response[i] = line[i];
+        }
+
+        for (int i = 0; i < response.length; i++) {
+            response[i] = (char) ((((int) response[i]) + shift) % TRANSFORM_MODULUS);
+        }
+
+        return response;
+
     }
 
     /**
@@ -60,7 +89,30 @@ public class Encrypt {
      * @see <a href="http://www.asciitable.com/">ASCII Character Table</a>
      */
     public static char[] decrypter(final char[] line, final int shift) {
-        return 0;
+
+        if (shift < MIN_SHIFT || shift > MAX_SHIFT) {
+            return null;
+        }
+
+        for (char x : line) {
+            if ((int) x < TRANSFORM_START || (int) x > TRANSFORM_END) {
+                return null;
+            }
+        }
+
+        char[] response = new char[line.length];
+
+        for (int i = 0; i < line.length; i++) {
+            response[i] = line[i];
+        }
+
+        for (int i = 0; i < response.length; i++) {
+            response[i] = (char) ((((int) response[i]) - shift) % TRANSFORM_MODULUS);
+        }
+
+        return response;
+
+
     }
 
     /* ********************************************************************************************
