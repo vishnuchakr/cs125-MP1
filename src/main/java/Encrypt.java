@@ -66,16 +66,16 @@ public class Encrypt {
 
         char[] response = new char[line.length];
 
-        for (int i = 0; i < line.length; i++) {
-            response[i] = line[i];
+        if (shift > 0) {
+            for (int i = 0; i < line.length; i++) {
+                response[i] = (char) (((line[i]) + shift - TRANSFORM_START) % TRANSFORM_MODULUS + TRANSFORM_START);
+            }
+        } else {
+            for (int i = 0; i < line.length; i++) {
+                response[i] = (char) (((line[i]) + shift - TRANSFORM_END) % TRANSFORM_MODULUS + TRANSFORM_END);
+            }
         }
-
-        for (int i = 0; i < response.length; i++) {
-            response[i] = (char) ((((int) response[i]) + shift) % TRANSFORM_MODULUS);
-        }
-
         return response;
-
     }
 
     /**
@@ -102,17 +102,16 @@ public class Encrypt {
 
         char[] response = new char[line.length];
 
-        for (int i = 0; i < line.length; i++) {
-            response[i] = line[i];
+        if (shift > 0) {
+            for (int i = 0; i < line.length; i++) {
+                response[i] = (char) (((line[i]) - shift - TRANSFORM_END) % TRANSFORM_MODULUS + TRANSFORM_END);
+            }
+        } else {
+            for (int i = 0; i < line.length; i++) {
+                response[i] = (char) (((line[i]) - shift - TRANSFORM_START) % TRANSFORM_MODULUS + TRANSFORM_START);
+            }
         }
-
-        for (int i = 0; i < response.length; i++) {
-            response[i] = (char) ((((int) response[i]) - shift) % TRANSFORM_MODULUS);
-        }
-
         return response;
-
-
     }
 
     /* ********************************************************************************************
