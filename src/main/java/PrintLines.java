@@ -52,7 +52,8 @@ public class PrintLines {
      * </ol>
      * <p>
      * Complete the Javadoc comment and write this function.
-     *
+     * @param actress Actress parameter.
+     * @param scriptLines Text file sent to void function.
      */
     public static void linePrinter(final String actress, final String[] scriptLines) {
 
