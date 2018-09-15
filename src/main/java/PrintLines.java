@@ -57,7 +57,31 @@ public class PrintLines {
      */
     public static void linePrinter(final String actress, final String[] scriptLines) {
 
+        String upperCaseActress = actress.toUpperCase();
+        String script = "";
 
+        for (int i = 0; i < scriptLines.length; i++) {
+            if (scriptLines[i].equals(upperCaseActress)) {
+                script += upperCaseActress.toLowerCase() + System.getProperty("line.separator")
+                        + "---" + System.getProperty("line.separator");
+                break;
+            }
+        }
+
+        for (int i = 0; i < scriptLines.length; i++) {
+            if (scriptLines[i].equals(upperCaseActress)) {
+                while (!scriptLines[i + 1].equals("")) {
+                    if (i == scriptLines.length - 2) {
+                        break;
+                    }
+                    script += scriptLines[i + 1] + System.getProperty("line.separator");
+                    i++;
+                }
+                script += "---" + System.getProperty("line.separator");
+            }
+        }
+
+        System.out.println(script);
 
     }
 
